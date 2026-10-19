@@ -1,0 +1,1741 @@
+:root {
+    --bg: #101b1b;
+    --panel: #182625;
+    --panel-2: #1e302d;
+    --text: #f4f2e9;
+    --muted: #aab7ad;
+    --accent: #d8c66a;
+    --mint: #9ac9b3;
+    --line: rgba(218, 232, 218, .13);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    min-height: 100%;
+    background: #0a1212;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 22px;
+}
+
+.presentation {
+    position: relative;
+    width: min(1180px, 100%);
+    aspect-ratio: 16 / 9;
+    min-height: 600px;
+    max-height: calc(100vh - 65px);
+    overflow: hidden;
+    background: var(--bg);
+    border: 1px solid rgba(218, 232, 218, .11);
+    border-radius: 20px;
+    box-shadow: 0 32px 100px rgba(0, 0, 0, .4);
+}
+
+.topbar {
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 72px;
+    padding: 0 5.5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--line);
+}
+
+.brand {
+    color: #dbe4d9;
+    font-size: 11px;
+    letter-spacing: .18em;
+    font-weight: 700;
+    text-decoration: none;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.brand-mark {
+    font-size: 23px;
+    color: var(--accent);
+    line-height: 1;
+}
+
+.top-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #a9b7ad;
+    font-size: 11px;
+    letter-spacing: .13em;
+}
+
+.live-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--mint);
+    box-shadow: 0 0 12px #9ac9b366;
+}
+
+.slide {
+    position: absolute;
+    inset: 0;
+    padding: 112px 6% 94px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(18px);
+    transition: opacity .35s ease, transform .35s ease, visibility .35s;
+    overflow: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #3b5049 transparent;
+}
+
+.slide.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+.eyebrow {
+    margin: 0 0 18px;
+    color: var(--mint);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .19em;
+}
+
+.eyebrow span {
+    color: var(--accent);
+}
+
+h1,
+h2,
+h3,
+p {
+    margin-top: 0;
+}
+
+h1,
+h2 {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    letter-spacing: -.055em;
+}
+
+h2 {
+    margin-bottom: 12px;
+    font-size: clamp(29px, 3.6vw, 47px);
+    line-height: 1.13;
+}
+
+h1 em,
+h2 em {
+    color: var(--accent);
+    font-style: normal;
+}
+
+.lead {
+    color: var(--muted);
+    font-size: 15px;
+    margin-bottom: 30px;
+}
+
+.footnote {
+    color: #84988d;
+    font-size: 11px;
+    line-height: 1.5;
+    margin: 20px 0 0;
+}
+
+/* Первый слайд */
+
+.cover {
+    padding-top: 160px;
+}
+
+.cover-copy {
+    position: relative;
+    z-index: 2;
+    max-width: 55%;
+}
+
+.cover h1 {
+    font-size: clamp(52px, 7vw, 88px);
+    line-height: .98;
+    margin: 0 0 24px;
+}
+
+.cover .subtitle {
+    color: #bdc9bd;
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+.cover-bottom {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 48px;
+    color: #9eafa3;
+    font-size: 11px;
+    letter-spacing: .04em;
+}
+
+.moon {
+    font-size: 28px;
+    color: var(--accent);
+}
+
+.name-date {
+    position: absolute;
+    bottom: 98px;
+    left: 6%;
+    color: #72857a;
+    font-size: 10px;
+    letter-spacing: .1em;
+}
+
+.name-date span {
+    color: var(--accent);
+    padding: 0 8px;
+}
+
+.dream-art {
+    position: absolute;
+    right: 3%;
+    top: 17%;
+    width: 47%;
+    height: 72%;
+}
+
+.orbit {
+    position: absolute;
+    border: 1px solid rgba(154, 201, 179, .22);
+    border-radius: 50%;
+    transform: rotate(-30deg);
+}
+
+.orbit-one {
+    width: 93%;
+    height: 54%;
+    top: 23%;
+    left: 0;
+}
+
+.orbit-two {
+    width: 72%;
+    height: 88%;
+    top: 5%;
+    left: 13%;
+    transform: rotate(30deg);
+}
+
+.moon-big {
+    position: absolute;
+    width: 170px;
+    height: 170px;
+    top: 18%;
+    left: 31%;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f0df94, #c5b65f);
+    box-shadow: 0 0 85px #d8c66a27, inset -23px -15px 35px #9e8d43;
+}
+
+.moon-big:after {
+    content: '';
+    position: absolute;
+    width: 145px;
+    height: 145px;
+    border-radius: 50%;
+    top: -12px;
+    right: -24px;
+    background: var(--bg);
+}
+
+.star {
+    position: absolute;
+    color: var(--accent);
+}
+
+.s1 {
+    top: 8%;
+    right: 22%;
+    font-size: 28px;
+}
+
+.s2 {
+    bottom: 23%;
+    left: 13%;
+    font-size: 32px;
+    color: var(--mint);
+}
+
+.s3 {
+    top: 56%;
+    right: 8%;
+    font-size: 52px;
+    color: var(--mint);
+}
+
+.dream-cloud {
+    position: absolute;
+    border: 1px solid rgba(154, 201, 179, .6);
+    border-radius: 100px;
+    height: 18px;
+}
+
+.cloud-one {
+    width: 100px;
+    top: 67%;
+    left: 24%;
+    transform: rotate(-12deg);
+}
+
+.cloud-two {
+    width: 58px;
+    top: 77%;
+    right: 12%;
+    transform: rotate(13deg);
+}
+
+.dream-line {
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    border: 1px solid #d8c66a66;
+    border-radius: 50%;
+    top: 44%;
+    left: 45%;
+}
+
+/* Второй слайд */
+
+.stat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 26px;
+}
+
+.stat-card {
+    position: relative;
+    min-height: 160px;
+    overflow: hidden;
+    padding: 24px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 13px;
+}
+
+.stat-number {
+    display: block;
+    font: 700 clamp(32px, 4vw, 48px) 'Manrope', sans-serif;
+    color: var(--accent);
+    letter-spacing: -.06em;
+    margin-bottom: 13px;
+}
+
+.stat-card p {
+    position: relative;
+    z-index: 1;
+    color: #c4d0c5;
+    max-width: 210px;
+    font-size: 13px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.card-glow {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: #d8c66a0c;
+    right: -30px;
+    bottom: -50px;
+}
+
+.question-card .stat-number {
+    color: var(--mint);
+}
+
+.audience-question {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    border-top: 1px solid var(--line);
+    padding-top: 17px;
+}
+
+.question-icon {
+    display: grid;
+    place-items: center;
+    width: 37px;
+    height: 37px;
+    border: 1px solid #d8c66a55;
+    color: var(--accent);
+    border-radius: 50%;
+    font-size: 19px;
+}
+
+.audience-question strong {
+    font-size: 12px;
+}
+
+.audience-question p {
+    color: var(--muted);
+    font-size: 13px;
+    margin: 4px 0 0;
+}
+
+.pause {
+    margin-left: auto;
+    color: #7f9186;
+    font-size: 9px;
+    letter-spacing: .14em;
+}
+
+/* Третий слайд: фазы сна */
+
+.sleep-layout {
+    display: grid;
+    grid-template-columns: .85fr 1.15fr;
+    gap: 26px;
+    align-items: stretch;
+}
+
+.sleep-stages {
+    display: grid;
+    gap: 12px;
+}
+
+.stage-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    padding: 19px 20px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    min-height: 140px;
+}
+
+.stage-label,
+.card-kicker {
+    font-size: 9px;
+    color: var(--mint);
+    letter-spacing: .15em;
+    font-weight: 700;
+}
+
+.stage-card h3 {
+    font-size: 17px;
+    margin: 12px 0 8px;
+}
+
+.stage-card p {
+    max-width: 280px;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.stage-wave {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 130px;
+    height: 40px;
+    opacity: .65;
+    background: repeating-linear-gradient(110deg,
+            transparent 0 9px,
+            #9ac9b355 10px 11px,
+            transparent 12px 18px);
+}
+
+.rem {
+    background: #25362e;
+}
+
+.rem .stage-label {
+    color: var(--accent);
+}
+
+.rem-chip {
+    position: absolute;
+    right: 18px;
+    top: 18px;
+    font: 700 17px 'Manrope';
+    color: var(--accent);
+    opacity: .7;
+}
+
+.hypnogram {
+    border-radius: 12px;
+    border: 1px solid var(--line);
+    padding: 20px;
+    background: #131f1e;
+}
+
+.chart-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+
+.chart-heading span {
+    font-size: 9px;
+    color: #81968a;
+    letter-spacing: .15em;
+}
+
+.chart {
+    display: grid;
+    grid-template-columns: 76px 1fr;
+    align-items: stretch;
+}
+
+.chart-labels {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 12px 0 20px;
+    color: #8ea095;
+    font-size: 9px;
+}
+
+.chart svg {
+    width: 100%;
+    height: auto;
+    overflow: visible;
+}
+
+.grid-lines path {
+    stroke: #71877a26;
+    stroke-dasharray: 3 5;
+}
+
+.sleep-area {
+    fill: #9ac9b319;
+}
+
+.sleep-line {
+    fill: none;
+    stroke: var(--mint);
+    stroke-width: 2.5;
+    stroke-linejoin: round;
+}
+
+.rem-bars rect {
+    fill: var(--accent);
+    opacity: .85;
+}
+
+.time-labels {
+    display: flex;
+    justify-content: space-between;
+    color: #7f9287;
+    font-size: 9px;
+    grid-column: 2;
+}
+
+.chart-note {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #aab7ad;
+    font-size: 10px;
+    margin: 15px 0 0 76px;
+}
+
+.legend-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+}
+
+/* Четвёртый слайд: мозг */
+
+.brain-layout {
+    display: grid;
+    grid-template-columns: .9fr 1.1fr;
+    gap: 35px;
+    align-items: center;
+}
+
+.brain-illustration {
+    position: relative;
+    min-height: 295px;
+    display: grid;
+    place-items: center;
+    background: radial-gradient(ellipse at center, #9ac9b31a, transparent 65%);
+}
+
+.brain-shape {
+    position: relative;
+    width: 230px;
+    height: 165px;
+    border-radius: 48% 52% 46% 42% / 54% 50% 50% 46%;
+    background: linear-gradient(135deg, #d8c66a, #b5a65a 65%, #867f4e);
+    box-shadow: 0 0 60px #d8c66a19;
+    transform: rotate(-8deg);
+}
+
+.brain-shape:before {
+    content: '';
+    position: absolute;
+    left: 48%;
+    top: 7%;
+    height: 86%;
+    width: 2px;
+    background: #6b6b43;
+    opacity: .75;
+}
+
+.brain-fold {
+    position: absolute;
+    display: block;
+    border: 3px solid #797748;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    opacity: .8;
+}
+
+.f1 {
+    width: 70px;
+    height: 55px;
+    top: 20px;
+    left: 18px;
+    transform: rotate(30deg);
+}
+
+.f2 {
+    width: 70px;
+    height: 50px;
+    top: 68px;
+    left: 24px;
+    transform: rotate(205deg);
+}
+
+.f3 {
+    width: 63px;
+    height: 45px;
+    top: 24px;
+    left: 92px;
+    transform: rotate(140deg);
+}
+
+.f4 {
+    width: 65px;
+    height: 55px;
+    top: 80px;
+    left: 93px;
+    transform: rotate(30deg);
+}
+
+.f5 {
+    width: 58px;
+    height: 45px;
+    top: 23px;
+    right: 5px;
+    transform: rotate(220deg);
+}
+
+.f6 {
+    width: 60px;
+    height: 42px;
+    top: 78px;
+    right: 5px;
+    transform: rotate(145deg);
+}
+
+.brain-pulse {
+    position: absolute;
+    border: 1px solid #9ac9b35e;
+    border-radius: 50%;
+    width: 265px;
+    height: 190px;
+    transform: rotate(-8deg);
+}
+
+.pulse-two {
+    width: 300px;
+    height: 220px;
+    opacity: .5;
+}
+
+.brain-caption {
+    position: absolute;
+    bottom: 9px;
+    font-size: 9px;
+    letter-spacing: .2em;
+    color: var(--mint);
+}
+
+.brain-facts {
+    display: grid;
+    gap: 9px;
+}
+
+.fact-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 17px 18px;
+    border-bottom: 1px solid var(--line);
+}
+
+.fact-icon {
+    flex: 0 0 35px;
+    height: 35px;
+    display: grid;
+    place-items: center;
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+.active-icon {
+    color: var(--accent);
+    background: #d8c66a16;
+}
+
+.quiet-icon {
+    color: var(--mint);
+    background: #9ac9b314;
+}
+
+.off-icon {
+    color: #d5a98a;
+    background: #d5a98a15;
+}
+
+.fact-row h3 {
+    font-size: 14px;
+    margin: 1px 0 5px;
+}
+
+.fact-row p {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.bottom-callout {
+    margin-top: 20px;
+    padding: 14px 17px;
+    border-radius: 9px;
+    border: 1px solid #d8c66a26;
+    background: #d8c66a09;
+    color: #d9dfd3;
+    font-size: 12px;
+}
+
+/* Пятый слайд: теории */
+
+.theory-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.theory-card {
+    position: relative;
+    min-height: 235px;
+    padding: 19px 17px;
+    border-radius: 12px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    overflow: hidden;
+}
+
+.theory-index {
+    color: #70857a;
+    font-size: 10px;
+    letter-spacing: .12em;
+}
+
+.theory-symbol {
+    display: block;
+    font-size: 29px;
+    color: var(--accent);
+    margin: 17px 0 15px;
+}
+
+.theory-card h3 {
+    font-size: 14px;
+    line-height: 1.3;
+    margin-bottom: 8px;
+}
+
+.theory-card .author {
+    color: var(--mint);
+    font-size: 10px;
+    line-height: 1.4;
+    margin-bottom: 12px;
+}
+
+.theory-card p:last-child {
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Шестой слайд: память */
+
+.memory-layout {
+    display: grid;
+    grid-template-columns: .9fr 1.1fr;
+    gap: 35px;
+    align-items: center;
+}
+
+.memory-points {
+    display: grid;
+    gap: 15px;
+}
+
+.memory-point {
+    display: flex;
+    gap: 17px;
+    align-items: center;
+    padding: 17px 0;
+    border-bottom: 1px solid var(--line);
+}
+
+.memory-point span {
+    color: var(--accent);
+    font-size: 11px;
+}
+
+.memory-point p {
+    color: #cbd6cc;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.maze-card {
+    padding: 20px 22px 18px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 13px;
+}
+
+.maze-label {
+    color: var(--mint);
+    font-size: 9px;
+    letter-spacing: .16em;
+    font-weight: 700;
+}
+
+.maze-card svg {
+    width: 100%;
+    max-height: 210px;
+    margin: 12px 0;
+}
+
+.maze-lines {
+    fill: none;
+    stroke: #779184;
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: .55;
+}
+
+.maze-route {
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 7 6;
+}
+
+.maze-start {
+    fill: var(--mint);
+}
+
+.maze-end {
+    fill: var(--accent);
+}
+
+.maze-card p {
+    color: #c3cec4;
+    font-size: 11px;
+    line-height: 1.55;
+    margin-bottom: 12px;
+}
+
+.maze-source {
+    color: #82958a;
+    font-size: 9px;
+    letter-spacing: .04em;
+}
+
+.callout-icon {
+    color: var(--accent);
+    font-size: 20px;
+    margin-right: 8px;
+}
+
+/* Седьмой слайд: эмоции */
+
+.emotion-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 17px;
+    margin-top: 27px;
+}
+
+.emotion-card {
+    position: relative;
+    overflow: hidden;
+    min-height: 250px;
+    padding: 25px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--panel);
+}
+
+.emotion-card.threat {
+    background: #202c28;
+}
+
+.emotion-art {
+    position: absolute;
+    right: 25px;
+    top: 17px;
+    font-size: 54px;
+    color: #d8c66a36;
+}
+
+.threat .emotion-art {
+    color: #9ac9b337;
+}
+
+.emotion-card h3 {
+    font-size: 22px;
+    margin: 17px 0 12px;
+}
+
+.emotion-card p {
+    max-width: 390px;
+    color: #b7c4b9;
+    font-size: 13px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.card-line {
+    width: 45px;
+    height: 2px;
+    background: var(--accent);
+    margin-bottom: 13px;
+}
+
+.threat .card-line {
+    background: var(--mint);
+}
+
+.card-bottom {
+    color: #82978b;
+    font-size: 9px;
+    letter-spacing: .15em;
+}
+
+.caution {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-top: 17px;
+    color: #b5c2b7;
+}
+
+.caution span {
+    flex: 0 0 24px;
+    display: grid;
+    place-items: center;
+    width: 24px;
+    height: 24px;
+    border: 1px solid #d8c66a77;
+    color: var(--accent);
+    border-radius: 50%;
+    font-size: 12px;
+}
+
+.caution p {
+    margin: 0;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+/* Восьмой слайд: необычные сны */
+
+.unusual-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.unusual-card {
+    overflow: hidden;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+    background: var(--panel);
+    padding: 0 16px 17px;
+}
+
+.unusual-visual {
+    height: 115px;
+    margin: 0 -16px 17px;
+    position: relative;
+    background: radial-gradient(circle at center, #d8c66a1a, transparent 65%);
+    display: grid;
+    place-items: center;
+}
+
+.lucid-moon {
+    font-size: 51px;
+    color: var(--accent);
+}
+
+.lucid-star {
+    position: absolute;
+    right: 28%;
+    top: 25%;
+    color: var(--mint);
+    font-size: 22px;
+}
+
+.lucid-ring {
+    position: absolute;
+    width: 90px;
+    height: 60px;
+    border: 1px solid #d8c66a66;
+    border-radius: 50%;
+    transform: rotate(-25deg);
+}
+
+.sense-icons {
+    display: flex;
+    gap: 14px;
+    color: var(--mint);
+    font-size: 26px;
+}
+
+.sense-icons span:nth-child(2) {
+    color: var(--accent);
+    transform: translateY(-12px);
+}
+
+.animals .unusual-visual {
+    background: radial-gradient(circle at center, #9ac9b31a, transparent 65%);
+}
+
+.animal-orbit {
+    position: relative;
+    width: 65px;
+    height: 65px;
+    border: 1px solid #9ac9b366;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 28px;
+}
+
+.animal-orbit i,
+.animal-orbit b {
+    position: absolute;
+    border: 1px solid #d8c66a55;
+    border-radius: 50%;
+    width: 90px;
+    height: 38px;
+    transform: rotate(35deg);
+}
+
+.animal-orbit b {
+    transform: rotate(-35deg);
+}
+
+.forget-number {
+    font: 700 43px 'Manrope';
+    color: var(--accent);
+}
+
+.forget-number span {
+    font-size: 17px;
+}
+
+.forgetting .unusual-visual {
+    display: grid;
+    place-items: center;
+}
+
+.unusual-card h3 {
+    font-size: 14px;
+    margin-bottom: 9px;
+}
+
+.unusual-card p {
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.55;
+    margin: 0;
+}
+
+/* Девятый слайд: открытые вопросы */
+
+.unknown-layout {
+    display: grid;
+    grid-template-columns: .9fr 1.1fr;
+    gap: 40px;
+    align-items: center;
+    min-height: 330px;
+}
+
+.unknown-layout h2 {
+    font-size: clamp(37px, 4.8vw, 61px);
+}
+
+.unknown-list {
+    position: relative;
+    z-index: 1;
+}
+
+.unknown-item {
+    display: grid;
+    grid-template-columns: 34px 1fr 20px;
+    gap: 10px;
+    align-items: center;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+}
+
+.unknown-item span {
+    color: var(--accent);
+    font-size: 10px;
+}
+
+.unknown-item p {
+    color: #d0dbd1;
+    font-size: 13px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.unknown-item b {
+    color: var(--mint);
+    font-weight: 400;
+}
+
+.open-question {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 23px;
+    color: #81958a;
+    font-size: 9px;
+    letter-spacing: .16em;
+}
+
+.open-question span {
+    color: var(--accent);
+}
+
+.unknown-decoration {
+    position: absolute;
+    bottom: 2%;
+    left: 5%;
+    font: 800 150px 'Manrope';
+    color: #9ac9b309;
+}
+
+.unknown-decoration i,
+.unknown-decoration b {
+    position: absolute;
+    width: 180px;
+    height: 80px;
+    border: 1px solid #9ac9b314;
+    border-radius: 50%;
+    top: 55px;
+    left: 30px;
+    transform: rotate(30deg);
+}
+
+.unknown-decoration b {
+    transform: rotate(-30deg);
+}
+
+/* Десятый слайд: выводы */
+
+.final-slide {
+    padding-bottom: 90px;
+}
+
+.final-slide h2 {
+    font-size: clamp(36px, 4.6vw, 57px);
+}
+
+.conclusion-layout {
+    display: grid;
+    grid-template-columns: .9fr 1.1fr;
+    gap: 34px;
+    margin-top: 20px;
+}
+
+.conclusion-list {
+    display: grid;
+    align-content: start;
+}
+
+.conclusion-item {
+    display: flex;
+    gap: 14px;
+    padding: 13px 0;
+    border-bottom: 1px solid var(--line);
+}
+
+.conclusion-item span {
+    color: var(--accent);
+    font-size: 10px;
+    padding-top: 3px;
+}
+
+.conclusion-item p {
+    margin: 0;
+    color: #cbd6cc;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.sources {
+    padding-left: 25px;
+    border-left: 1px solid var(--line);
+}
+
+.sources h3 {
+    color: var(--mint);
+    font-size: 12px;
+    margin-bottom: 12px;
+}
+
+.sources ol {
+    padding-left: 17px;
+    margin: 0;
+    color: #8fa196;
+    font-size: 9px;
+    line-height: 1.8;
+}
+
+.thank-you {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding-top: 19px;
+    margin-top: 18px;
+    border-top: 1px solid var(--line);
+}
+
+.thank-you div {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.thank-moon {
+    font-size: 23px;
+    color: var(--accent);
+}
+
+.thank-you strong {
+    font-size: 12px;
+}
+
+.thank-you>span {
+    color: var(--mint);
+    font-size: 11px;
+}
+
+/* Кнопки и индикатор прогресса */
+
+.controls {
+    position: absolute;
+    z-index: 8;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 68px;
+    padding: 0 5.5%;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    background: linear-gradient(0deg, rgba(16, 27, 27, .98), rgba(16, 27, 27, .85));
+    border-top: 1px solid var(--line);
+}
+
+.nav-button {
+    display: grid;
+    place-items: center;
+    width: 35px;
+    height: 35px;
+    border: 1px solid #61746a;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--text);
+    font-size: 18px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.nav-button:hover:not(:disabled) {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--bg);
+}
+
+.nav-button:disabled {
+    opacity: .3;
+    cursor: default;
+}
+
+.nav-button.next {
+    background: var(--accent);
+    color: var(--bg);
+    border-color: var(--accent);
+}
+
+.nav-button.next:hover:not(:disabled) {
+    background: #efe19b;
+}
+
+.progress-wrap {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex: 1;
+}
+
+.progress-track {
+    height: 3px;
+    background: #34443d;
+    border-radius: 10px;
+    flex: 1;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 10%;
+    background: var(--accent);
+    transition: width .3s ease;
+}
+
+.progress-wrap span {
+    min-width: 105px;
+    color: #83958a;
+    font-size: 9px;
+    letter-spacing: .06em;
+}
+
+.keyboard-hint {
+    color: #71847a;
+    font-size: 10px;
+    margin-top: 13px;
+}
+
+.keyboard-hint kbd {
+    font: inherit;
+    border: 1px solid #33463e;
+    border-radius: 4px;
+    padding: 2px 5px;
+    color: #a9b8ad;
+}
+
+/* Адаптация для планшетов и телефонов */
+
+@media (max-width: 850px) {
+    body {
+        padding: 0;
+        display: block;
+        background: var(--bg);
+    }
+
+    .presentation {
+        width: 100%;
+        height: 100dvh;
+        max-height: none;
+        min-height: 0;
+        aspect-ratio: auto;
+        border: 0;
+        border-radius: 0;
+    }
+
+    .topbar {
+        height: 60px;
+        padding: 0 22px;
+    }
+
+    .slide {
+        padding: 90px 24px 88px;
+    }
+
+    .cover {
+        padding-top: 145px;
+    }
+
+    .cover-copy {
+        max-width: 70%;
+    }
+
+    .cover h1 {
+        font-size: clamp(45px, 10vw, 75px);
+    }
+
+    .dream-art {
+        right: -15%;
+        top: 23%;
+        width: 58%;
+        opacity: .75;
+    }
+
+    .moon-big {
+        width: 115px;
+        height: 115px;
+    }
+
+    .moon-big:after {
+        width: 100px;
+        height: 100px;
+    }
+
+    .stat-grid {
+        gap: 8px;
+    }
+
+    .stat-card {
+        padding: 15px;
+        min-height: 140px;
+    }
+
+    .stat-card p {
+        font-size: 11px;
+    }
+
+    .sleep-layout,
+    .brain-layout,
+    .memory-layout,
+    .unknown-layout,
+    .conclusion-layout {
+        gap: 17px;
+    }
+
+    .theory-grid,
+    .unusual-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .theory-card {
+        min-height: 190px;
+    }
+
+    .unusual-card {
+        min-height: 210px;
+    }
+
+    .controls {
+        height: 62px;
+        padding: 0 20px;
+    }
+
+    .keyboard-hint {
+        display: none;
+    }
+}
+
+@media (max-width: 560px) {
+    .slide {
+        padding: 82px 20px 82px;
+    }
+
+    .eyebrow {
+        margin-bottom: 13px;
+        font-size: 9px;
+    }
+
+    .lead {
+        font-size: 13px;
+        margin-bottom: 20px;
+    }
+
+    .cover {
+        padding-top: 125px;
+    }
+
+    .cover-copy {
+        max-width: 100%;
+    }
+
+    .cover h1 {
+        font-size: 55px;
+    }
+
+    .cover .subtitle {
+        font-size: 14px;
+    }
+
+    .cover-bottom {
+        margin-top: 30px;
+    }
+
+    .dream-art {
+        top: 48%;
+        right: -5%;
+        width: 65%;
+        height: 40%;
+        opacity: .42;
+    }
+
+    .moon-big {
+        width: 90px;
+        height: 90px;
+    }
+
+    .moon-big:after {
+        width: 78px;
+        height: 78px;
+    }
+
+    .name-date {
+        bottom: 90px;
+        left: 20px;
+    }
+
+    .stat-grid {
+        grid-template-columns: 1fr;
+        gap: 9px;
+    }
+
+    .stat-card {
+        min-height: 95px;
+        padding: 14px 17px;
+        display: flex;
+        align-items: center;
+        gap: 18px;
+    }
+
+    .stat-number {
+        min-width: 70px;
+        font-size: 34px;
+        margin: 0;
+    }
+
+    .stat-card p {
+        max-width: none;
+    }
+
+    .audience-question {
+        flex-wrap: wrap;
+    }
+
+    .pause {
+        width: 100%;
+        margin-left: 51px;
+    }
+
+    .sleep-layout,
+    .brain-layout,
+    .memory-layout,
+    .unknown-layout,
+    .conclusion-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .stage-card {
+        min-height: 125px;
+    }
+
+    .hypnogram {
+        padding: 13px;
+    }
+
+    .brain-illustration {
+        min-height: 210px;
+    }
+
+    .brain-shape {
+        transform: scale(.78) rotate(-8deg);
+    }
+
+    .brain-pulse {
+        transform: scale(.8) rotate(-8deg);
+    }
+
+    .brain-caption {
+        bottom: 0;
+    }
+
+    .fact-row {
+        padding: 12px 0;
+    }
+
+    .theory-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .theory-card {
+        padding: 14px;
+        min-height: 195px;
+    }
+
+    .theory-symbol {
+        margin: 10px 0;
+    }
+
+    .theory-card h3 {
+        font-size: 12px;
+    }
+
+    .theory-card p:last-child {
+        font-size: 10px;
+    }
+
+    .memory-layout {
+        gap: 20px;
+    }
+
+    .memory-point {
+        padding: 12px 0;
+    }
+
+    .memory-point p {
+        font-size: 13px;
+    }
+
+    .maze-card {
+        padding: 15px;
+    }
+
+    .emotion-layout {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .emotion-card {
+        min-height: 220px;
+        padding: 19px;
+    }
+
+    .emotion-card h3 {
+        font-size: 19px;
+    }
+
+    .emotion-card p {
+        font-size: 12px;
+    }
+
+    .unusual-grid {
+        gap: 9px;
+    }
+
+    .unusual-card {
+        padding: 0 12px 14px;
+    }
+
+    .unusual-visual {
+        margin: 0 -12px 14px;
+        height: 90px;
+    }
+
+    .unusual-card h3 {
+        font-size: 12px;
+    }
+
+    .unusual-card p {
+        font-size: 10px;
+    }
+
+    .unknown-layout {
+        gap: 10px;
+    }
+
+    .unknown-layout h2 {
+        font-size: 43px;
+    }
+
+    .unknown-item {
+        padding: 14px 0;
+    }
+
+    .unknown-item p {
+        font-size: 12px;
+    }
+
+    .unknown-decoration {
+        display: none;
+    }
+
+    .sources {
+        padding-left: 0;
+        border-left: 0;
+        padding-top: 12px;
+        border-top: 1px solid var(--line);
+    }
+
+    .sources ol {
+        font-size: 9px;
+    }
+
+    .thank-you {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .progress-wrap {
+        gap: 8px;
+    }
+
+    .progress-wrap span {
+        min-width: 77px;
+        font-size: 8px;
+    }
+
+    .nav-button {
+        flex: 0 0 32px;
+        width: 32px;
+        height: 32px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+}
